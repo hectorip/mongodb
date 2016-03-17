@@ -56,22 +56,22 @@ defmodule Mongo.Connection do
 
   @doc false
   def find(conn, coll, query, select, opts \\ []) do
-    GenServer.call(conn, {:find, coll, query, select, opts})
+    GenServer.call(conn, {:find, coll, query, select, opts}, 60000)
   end
 
   @doc false
   def get_more(conn, coll, cursor_id, opts \\ []) do
-    GenServer.call(conn, {:get_more, coll, cursor_id, opts})
+    GenServer.call(conn, {:get_more, coll, cursor_id, opts},60000)
   end
 
   @doc false
   def kill_cursors(conn, cursor_ids) do
-    GenServer.call(conn, {:kill_cursors, List.wrap(cursor_ids)})
+    GenServer.call(conn, {:kill_cursors, List.wrap(cursor_ids)},60000)
   end
 
   @doc false
   def find_one(conn, coll, query, select, opts \\ []) do
-    GenServer.call(conn, {:find_one, coll, query, select, opts})
+    GenServer.call(conn, {:find_one, coll, query, select, opts},60000)
   end
 
   @doc false
